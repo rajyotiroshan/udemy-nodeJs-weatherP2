@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rajyotiroshan/udemy-nodeJs-weatherP2/issues"
   },
-  "homepage": "https://github.com/rajyotiroshan/udemy-nodeJs-weatherP2#readme"
+  "homepage": "https://github.com/rajyotiroshan/udemy-nodeJs-weatherP2#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
