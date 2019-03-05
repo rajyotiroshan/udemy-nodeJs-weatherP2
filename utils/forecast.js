@@ -14,7 +14,24 @@ const request = require("request");
  * @param {latitude, longitude, callback}
  */
 const forecast = (latitude, longitude, callback) => {
-    
+  const url = `https://api.darksky.net/forecast/a3a3eac404d8ba7fb32ffb3c826071e9/${latitude},${longitude}?units=si&lang=es`
+  request(
+    {
+      url: url,
+      json: true
+    },
+    (error, response) => {
+        if(error){//low level os error.
+            callback('Error:: Unable to find weather service!.', undefined);
+        }else if(response.body.error) {//search error.
+            callback(response.body.error, undefined);
+        }else {//got some response.
+            const temp = response.body.currently.temperature;
+            const precipProbability = response.body.currently.precipProbability;
+            callback(undefined,{temp, precipProbability});
+        }
+    }
+  );
 };
 
 module.exports = forecast;
