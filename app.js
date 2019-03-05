@@ -1,5 +1,5 @@
-const geoCode = require("./utils/geocode");
-
+//const geoCode = require("./utils/geocode");
+const forecast = require("./utils/forecast");
 //const url =
   //"https://api.darksky.net/forecast/a3a3eac404d8ba7fb32ffb3c826071e9/37.8267,-122.4233?units=si&lang=es";
 /* request(
@@ -23,11 +23,14 @@ const geoCode = require("./utils/geocode");
 ); */
 
 
-geoCode("kandiwali", (error, data)=> {
+/* geoCode("kandiwali", (error, data)=> {
   console.log("Error",error);
   console.log('Date', data);
 });
-
-
+ */
+forecast(-75.7088, 44.1545, (error, data) => {
+  console.log('Error', error)
+  console.log('Data', data)
+}) 
 
 
