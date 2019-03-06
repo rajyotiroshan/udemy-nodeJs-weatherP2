@@ -18,17 +18,17 @@ const forecast = (latitude, longitude, callback) => {
   const url = `https://api.darksky.net/forecast/a3a3eac404d8ba7fb32ffb3c826071e9/${latitude},${longitude}?units=si&lang=es`
   request(
     {
-      url: url,
+      url,
       json: true
     },
-    (error, response) => {
+    (error, {body}) => {
         if(error){//low level os error.
             callback('Error:: Unable to find weather service!.', undefined);
-        }else if(response.body.error) {//search error.
-            callback(response.body.error, undefined);
+        }else if(body.error) {//search error.
+            callback(body.error, undefined);
         }else {//got some response.
-            const temp = response.body.currently.temperature;
-            const precipProbability = response.body.currently.precipProbability;
+            const temp = body.currently.temperature;
+            const precipProbability = body.currently.precipProbability;
             callback(undefined,{temp, precipProbability});
         }
     }
